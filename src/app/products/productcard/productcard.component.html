@@ -1,0 +1,32 @@
+<div class="card my-3" style="width: 18rem; height: 600px">
+  <div *ngIf="product.stock; then stock; else out"></div>
+  <img [src]="product.thumbnail" class="card-img-top" />
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <h5 class="card-title">{{ product.price | currency : "EGP" }}</h5>
+    </div>
+
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+    <div class="d-flex justify-content-between btns">
+      <a class="btn btn-primary" (click)="productDetails(product.id)"
+        >View products</a
+      >
+      <a
+        class="btn btn-primary ms-3"
+        *ngIf="product.stock"
+        (click)="addToCart(product)"
+        >Add to cart</a
+      >
+    </div>
+  </div>
+</div>
+
+<ng-template #stock>
+  <span class="badge text-bg-success">in stock</span>
+</ng-template>
+<ng-template #out>
+  <span class="badge text-bg-danger">out of stock</span>
+</ng-template>

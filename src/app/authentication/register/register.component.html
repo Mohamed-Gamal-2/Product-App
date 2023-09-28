@@ -1,0 +1,106 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="name" name="name" formControlName="name" />
+  <div
+    *ngIf="
+      registerForm.controls['name'].touched &&
+      registerForm.controls['name'].invalid
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="registerForm.controls['name'].errors!['pattern']"
+      >Invalid name format</span
+    >
+    <span *ngIf="registerForm.controls['name'].errors!['required']"
+      >This field is required</span
+    >
+  </div>
+
+  <input
+    type="email"
+    placeholder="Email"
+    name="email"
+    formControlName="email"
+  />
+
+  <div
+    *ngIf="
+      registerForm.controls['email'].touched &&
+      registerForm.controls['email'].invalid
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="registerForm.controls['email'].errors!['pattern']"
+      >Invalid Email format</span
+    >
+    <span *ngIf="registerForm.controls['email'].errors!['required']"
+      >This field is required</span
+    >
+  </div>
+
+  <input
+    type="text"
+    placeholder="Username"
+    name="userName"
+    formControlName="userName"
+  />
+
+  <div
+    *ngIf="
+      registerForm.controls['userName'].touched &&
+      registerForm.controls['userName'].invalid
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="registerForm.controls['userName'].errors!['pattern']"
+      >Invalid Username format</span
+    >
+    <span *ngIf="registerForm.controls['userName'].errors!['required']"
+      >This field is required</span
+    >
+  </div>
+
+  <input
+    type="password"
+    placeholder="Password"
+    name="password"
+    formControlName="password"
+  />
+  <div
+    *ngIf="
+      registerForm.controls['password'].touched &&
+      registerForm.controls['password'].invalid
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="registerForm.controls['password'].errors!['pattern']"
+      >Invalid password format</span
+    >
+    <span *ngIf="registerForm.controls['password'].errors!['required']"
+      >This field is required</span
+    >
+  </div>
+
+  <input
+    type="password"
+    placeholder="confirm Password"
+    name="Cpassword"
+    formControlName="Cpassword"
+  />
+
+  <div
+    *ngIf="
+      registerForm.controls['Cpassword'].touched &&
+      registerForm.controls['Cpassword'].invalid
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="registerForm.controls['Cpassword'].errors!['pattern']"
+      >Invalid Cpassword format</span
+    >
+    <span *ngIf="registerForm.controls['Cpassword'].errors!['required']"
+      >This field is required</span
+    >
+  </div>
+
+  <button type="submit">Register</button>
+</form>

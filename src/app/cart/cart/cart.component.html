@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Shopping Cart</h1>
+  <table *ngIf="cartProducts.length != 0">
+    <tr>
+      <th></th>
+      <th class="text-center">Description</th>
+      <th class="text-center">Quantity</th>
+      <th class="text-center">Remove</th>
+      <th class="text-center">Price</th>
+    </tr>
+    <tr *ngFor="let product of cartProducts">
+      <td><img [src]="product.thumbnail" height="60px" /></td>
+      <td class="text-center">{{ product.title }}</td>
+      <td class="text-center">
+        <button class="btn btn-danger" (click)="sub(product)">-</button>
+        {{ product.Qty }}
+        <button class="btn btn-success" (click)="add(product)">+</button>
+      </td>
+      <td>
+        <div
+          class="d-flex mx-auto justify-content-center"
+          (click)="removeItem(product)"
+        >
+          <button>
+            <i class="fa-regular fa-x" style="color: #ff0000"></i>
+          </button>
+        </div>
+      </td>
+      <td class="text-center">
+        {{
+          (product.price - product.discountPercentage) * product.Qty
+            | currency : "EGP"
+        }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-center total">Total</td>
+      <td class="text-center total">{{ sum | currency : "EGP" }}</td>
+    </tr>
+  </table>
+  <div
+    *ngIf="cartProducts.length == 0"
+    class="d-flex mx-auto justify-content-center align-item-center empty"
+  >
+    Cart is empty
+  </div>
+</div>

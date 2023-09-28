@@ -1,0 +1,41 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <input
+    type="text"
+    placeholder="Email"
+    name="email"
+    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    required
+    ngModel
+    #email="ngModel"
+  />
+  <div
+    *ngIf="
+      (email.touched == true && email.invalid) ||
+      (loginForm.submitted && email.invalid)
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="email.errors?.['pattern']">Invalid Email format</span>
+    <span *ngIf="email.errors?.['required']">This field is required</span>
+  </div>
+
+  <input
+    type="password"
+    placeholder="Password"
+    name="password"
+    ngModel
+    required
+    #password="ngModel"
+  />
+  <div
+    *ngIf="
+      (password.touched == true && password.invalid) ||
+      (loginForm.submitted && password.invalid)
+    "
+    class="mb-3 text-danger"
+  >
+    <span *ngIf="password.errors?.['required']">This field is required</span>
+  </div>
+
+  <button type="submit">Login</button>
+</form>
